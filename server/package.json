@@ -1,0 +1,22 @@
+{
+  "name": "server-connect-4",
+  "version": "1.0.0",
+  "description": "The server side of the connect 4 app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "joi",
+    "passport",
+    "jwt",
+    "express",
+    "node",
+    "nodejs",
+    "socket"
+  ],
+  "author": "Edgar Vallejo Curti, Eduardo Navarro Zuloaga, Rodrigo Alvarez Teytud",
+  "license": "MIT"
+}
