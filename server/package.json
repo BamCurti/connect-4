@@ -17,6 +17,6 @@
     "nodejs",
     "socket"
   ],
-  "author": "Edgar Vallejo Curti, Eduardo Navarro Zuloaga, Rodrigo Alvarez Teytud",
+  "author": ["Edgar Vallejo Curti", "Eduardo Navarro Zuloaga", "Rodrigo Alvarez Teytud"],
   "license": "MIT"
 }
