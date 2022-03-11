@@ -20,6 +20,7 @@
     "nodejs",
     "socket"
   ],
+<<<<<<< HEAD
   
   "author": "Edgar Vallejo Curti, Eduardo Navarro Zuloaga, Rodrigo Alvarez Teytud",
   "license": "MIT",
@@ -27,4 +28,8 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3"
   }
+=======
+  "author": ["Edgar Vallejo Curti", "Eduardo Navarro Zuloaga", "Rodrigo Alvarez Teytud"],
+  "license": "MIT"
+>>>>>>> 51a493d2153b8c0fb41146a5e25b53693aa6fbb2
 }
