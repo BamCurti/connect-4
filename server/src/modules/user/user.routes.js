@@ -1,9 +1,12 @@
 const router = require('express').Router();
+const userController = require('./user.controller');
 
 //CREATE
-router.post('/', (req, res)=>{
-    res.send('User created.')    
-});
+router.post('/', 
+    userController.signUpVerify,
+    userController.create
+);
+
 //DELETE
 router.delete('/:id', (req, res)=>{
     const id = req.params.id;
