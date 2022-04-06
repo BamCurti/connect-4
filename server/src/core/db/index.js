@@ -3,7 +3,6 @@ const { MongoClient } = require('mongodb');
 const user = process.env.DB_USER;
 const password = process.env.DB_PASSWORD;
 let url = `mongodb+srv://${user}:${password}@cluster0.1hy5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-url = 'mongodb+srv://curti:6669@cluster0.1hy5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 const DB = {
     dbInstance: null,
