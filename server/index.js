@@ -15,8 +15,6 @@ const db = require('./src/core/db');
 //import middleware
 const { boomError, internalError } = require('./src/core/middlewares/error.handler');
 
-
-
 //Init app
 const app = express();
 
