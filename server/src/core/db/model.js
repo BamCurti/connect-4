@@ -73,7 +73,11 @@ class Model {
                 _id : ObjectId(id),
             };
 
-            this.collection.update(criteria, doc, (err, result) => {
+            const update = {
+                $set: doc
+            }
+
+            this.collection.updateOne(criteria, update, (err, result) => {
                 if(err) reject(boom.notFound(`${this.name} ${id} not found`));
                 resolve(result);
             })

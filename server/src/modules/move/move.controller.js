@@ -24,13 +24,15 @@ const moveController = {
         .catch(err => res.status(500).send(err));
     },
     update: (req, res) => {
-        const { id, x, y, color } = req.body;
-        const moveModel = new MoveModel();
-        moveModel.update(id, { 
+        const { x, y, color } = req.body;
+        const id = req.params.id;
+        const upt = {
             x, y, color
-        })
+        }
+        const moveModel = new MoveModel();
+        moveModel.update(id, upt)
         .then(result => res.json(result))
-        .catch(err => boomErrorMinimizer(err, req, res, null));
+        .catch(err => res.status(500).json(err));
     },
     delete: (req, res) => {
         const id = req.params.id;

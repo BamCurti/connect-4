@@ -3,17 +3,11 @@ const moveController = require('./move.controller');
 
 router.get('/', moveController.getAll);
 
-router.get('/:id', moveController.get)
+router.get('/:id', moveController.get);
 
-router.post('/', moveController.create)
+router.post('/', moveController.create);
 
-router.put('/:id', (req,res) => {
-    const id = req.params.id;
-    res.json({
-        ...req.body,
-        id
-    });
-});
+router.put('/:id', moveController.update);
 
 router.delete('/:id', moveController.delete)
 
