@@ -1,27 +1,19 @@
 const router = require('express').Router();
 const userController = require('./user.controller');
 
-//CREATE
-router.post('/', 
-    userController.signUpVerify,
-    userController.create
-);
+//GET ALL
+router.get('/', userController.getAll);
+
+//GET
+router.get('/:id', userController.get);
+
+//POST
+router.post('/', userController.create);
+
+//UPDATE 
+router.put('/:id', userController.update);
 
 //DELETE
-router.delete('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send('User ' + id + ' deleted.');
-});
-//GETINFO
-router.get('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send('User ' + id);
-});
-//MODIFY
-router.put('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send(id + ' user modified.');
-});
-
+router.delete('/:id', userController.delete)
 
 module.exports = router;

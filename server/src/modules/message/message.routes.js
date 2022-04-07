@@ -1,24 +1,19 @@
 const router = require('express').Router();
+const messageController = require('./message.controller');
 
-//CREATE
-router.post('/', (req, res)=>{
-    res.send('Message created')    
-});
+//GET ALL
+router.get('/', messageController.getAll);
+
+//GET
+router.get('/:id', messageController.get);
+
+//POST
+router.post('/', messageController.create);
+
+//UPDATE 
+router.put('/:id', messageController.update);
+
 //DELETE
-router.delete('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send('Message ' + id + ' deleted.');
-});
-//GETINFO
-router.get('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send('Message ' + id);
-});
-//MODIFY
-router.put('/:id', (req, res)=>{
-    const id = req.params.id;
-    res.send(id + 'Message modified');
-});
-
+router.delete('/:id', messageController.delete)
 
 module.exports = router;
