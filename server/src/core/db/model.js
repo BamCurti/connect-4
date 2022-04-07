@@ -20,7 +20,7 @@ class Model {
         return new Promise((resolve, reject) => {
             this.collection.find().toArray((err, res) => {
                 if(err) reject(err);
-                resolve(results);
+                resolve(res);
             })
         })
     }

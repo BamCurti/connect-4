@@ -1,19 +1,11 @@
 const router = require('express').Router();
+const moveController = require('./move.controller');
 
-router.get('/', (req, res) => {
-    res.send('Moves');
-});
+router.get('/', moveController.getAll);
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    res.send(`move ${id}`);
-})
+router.get('/:id', moveController.get)
 
-router.post('/', (req, res) => {
-    res.json({
-        ...req.body,
-    });
-})
+router.post('/', moveController.create)
 
 router.put('/:id', (req,res) => {
     const id = req.params.id;
@@ -23,12 +15,6 @@ router.put('/:id', (req,res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    res.json({
-        ...req.body,
-        id
-    });
-})
+router.delete('/:id', moveController.delete)
 
 module.exports = router;

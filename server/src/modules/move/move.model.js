@@ -6,3 +6,5 @@ class Move extends Model {
         super('Move');
     }
 }
+
+module.exports = Move;

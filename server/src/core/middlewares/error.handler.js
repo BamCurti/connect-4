@@ -5,7 +5,7 @@ const boomError = (err, req, res, next) => {
     else next(err);
 }
 
-const boomErrorMinimizer = (err) => {
+const boomErrorMinimizer = (err, req, res, next) => {
     const { output } = err;
     res.status(output.statusCode).json(output.payload);
 }
