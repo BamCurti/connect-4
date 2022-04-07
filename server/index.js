@@ -12,6 +12,9 @@ const router = require('./src/routes');
 //import db
 const db = require('./src/core/db');
 
+//import swagger conf
+const swaggerConf = require('./swaggerConf');
+
 //import middleware
 const { boomError, internalError } = require('./src/core/middlewares/error.handler');
 
@@ -31,6 +34,10 @@ app.use('/api', router);
 app.use(boomError);
 app.use(internalError);
 
+//set swagger config
+swaggerConf(app);
+
+//connect to db
 db.connect()
 .then(client => console.log("client"))
 .catch(err => console.error(err));

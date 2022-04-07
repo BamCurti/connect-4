@@ -1,6 +1,6 @@
 const boomError = (err, req, res, next) => {
     if(err.isBoom) {
-        boomErrorMinimizer(err)
+        boomErrorMinimizer(err, req, res, next);
     }
     else next(err);
 }

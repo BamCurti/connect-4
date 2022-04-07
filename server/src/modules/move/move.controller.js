@@ -1,8 +1,22 @@
+//model
 const MoveModel = require('./move.model');
+
+//joi
+const { moveSchema } = require('./move.schema');
+
+//utils
 const {boomErrorMinimizer} = require('./../../core/middlewares/error.handler');
+
+//dependecies
 const boom = require('@hapi/boom');
 
 const moveController = {
+    verifyMoveFormat: (req, res, next) => {
+        const body = req.body;
+        const validation = moveSchema.validate(body);
+        if(validation.error) next(boom.badRequest('Bad move format.'));
+        next();
+    },
     getAll: (req, res) => {
         const moveModel = new MoveModel();
         moveModel.getAll()
