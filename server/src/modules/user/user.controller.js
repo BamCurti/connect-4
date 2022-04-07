@@ -5,6 +5,7 @@ const boom = require('@hapi/boom');
 const { signUpSchema } = require('./user.schema');
 
 const userController = {
+
     create: (req, res) => {
         console.log('Creating user')
         const body = req.body;
