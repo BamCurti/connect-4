@@ -5,7 +5,7 @@ const boom = require('@hapi/boom');
 const moveController = {
     getAll: (req, res) => {
         const moveModel = new MoveModel();
-        users.getAll()
+        moveModel.getAll()
         .then(results => res.json({results}))
         .catch(err => res.sendStatus(500));
     },
@@ -17,6 +17,13 @@ const moveController = {
         .catch(err => boomErrorMinimizer(err));
     },
     create: (req, res) => {
+        const move = req.body;
+        const moveModel = new MoveModel();
+        moveModel.create(doc)
+        .then(result => res.status(201).send(result))
+        .catch(err => res.status(500).send(err));
+    },
+    remove: (req, res) => {
 
     }
 }
