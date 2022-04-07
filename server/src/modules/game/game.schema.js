@@ -4,7 +4,6 @@ const id = joi.string();
 const winner = joi.string();
 const bluePlayer = joi.string();
 const redPlayer = joi.string();
-const datetime = joi.date();
 const detail = joi.array([joi.string()]);
 
 const gameSchema = joi.object({
@@ -12,7 +11,6 @@ const gameSchema = joi.object({
     winner: winner.required(),
     bluePlayer: bluePlayer.required(),
     redPlayer: redPlayer.required(),
-    datetime: datetime.required(),
     detail: detail.required()
 });
 
