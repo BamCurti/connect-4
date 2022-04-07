@@ -20,7 +20,7 @@ class Model {
         return new Promise((resolve, reject) => {
             this.collection.find().toArray((err, res) => {
                 if(err) reject(err);
-                resolve(results);
+                resolve(res);
             })
         })
     }
@@ -73,7 +73,29 @@ class Model {
                 _id : ObjectId(id),
             };
 
-            this.collection.update(criteria, doc, (err, result) => {
+            const update = {
+                $set: doc
+            }
+
+            this.collection.updateOne(criteria, update, (err, result) => {
+                if(err) reject(boom.notFound(`${this.name} ${id} not found`));
+                resolve(result);
+            })
+        })
+    }
+
+    delete(id) {
+        /**
+         * @name delete
+         * @description returns a promise which deletes an existing document from the database. If there is a problem, or it doesn't exist, rejects a boom problem.
+         * @param {string} id The id of the document to delete.
+         * @returns Promise<Any>
+         */
+        return new Promise((resolve, reject) => {
+            const query = {
+                _id: ObjectId(id)
+            }
+            this.collection.deleteOne(query, (err, result) => {
                 if(err) reject(boom.notFound(`${this.name} ${id} not found`));
                 resolve(result);
             })

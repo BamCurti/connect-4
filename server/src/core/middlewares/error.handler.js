@@ -1,9 +1,13 @@
 const boomError = (err, req, res, next) => {
     if(err.isBoom) {
-        const { output } = err;
-        res.status(output.statusCode).json(output.payload);
+        boomErrorMinimizer(err, req, res, next);
     }
     else next(err);
+}
+
+const boomErrorMinimizer = (err, req, res, next) => {
+    const { output } = err;
+    res.status(output.statusCode).json(output.payload);
 }
 
 const internalError = (err, req, res, next) => {
@@ -12,5 +16,6 @@ const internalError = (err, req, res, next) => {
 
 module.exports = {
     boomError,
-    internalError
+    internalError,
+    boomErrorMinimizer
 }
