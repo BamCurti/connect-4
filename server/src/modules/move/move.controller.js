@@ -28,7 +28,7 @@ const moveController = {
         const moveModel = new MoveModel();
         moveModel.get(id)
         .then(result => res.json(result))
-        .catch(err => boomErrorMinimizer(err, req, res, null));
+        .catch(err => boomErrorMinimizer(boom.notFound('Move not found'), req, res, null));
     },
     create: (req, res) => {
         const move = req.body;
@@ -53,7 +53,7 @@ const moveController = {
         const moveModel = new MoveModel();
         moveModel.delete(id)
         .then(result => res.status(200).json(result))
-        .catch(err => boomErrorMinimizer(err, req, res, null));
+        .catch(err => boomErrorMinimizer(boom.internal(), req, res, null));
     },
 }
 
