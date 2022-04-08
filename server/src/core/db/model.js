@@ -20,11 +20,7 @@ class Model {
         return new Promise((resolve, reject) => {
             this.collection.find().toArray((err, res) => {
                 if(err) reject(err);
-<<<<<<< HEAD
-                resolve(results);
-=======
                 resolve(res);
->>>>>>> server
             })
         })
     }
@@ -77,9 +73,6 @@ class Model {
                 _id : ObjectId(id),
             };
 
-<<<<<<< HEAD
-            this.collection.update(criteria, doc, (err, result) => {
-=======
             const update = {
                 $set: doc
             }
@@ -103,7 +96,6 @@ class Model {
                 _id: ObjectId(id)
             }
             this.collection.deleteOne(query, (err, result) => {
->>>>>>> server
                 if(err) reject(boom.notFound(`${this.name} ${id} not found`));
                 resolve(result);
             })

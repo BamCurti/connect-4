@@ -1,9 +1,23 @@
-//dependencies
+//joi
+const { userSchema } = require('./user.schema');
+
+//model
 const UserModel = require('./user.model');
+
+//utils
 const {boomErrorMinimizer} = require('./../../core/middlewares/error.handler');
+
+//dependencies
 const boom = require('@hapi/boom');
 
 const userController = {
+    verifyUserFormat: (req, res, next) => {
+        const body = req.body;
+        const validation = userSchema.validate(body);
+        if(validation.error) next(boom.badRequest('Bad user format.'));
+        next();
+    },
+
     getAll: (req, res) => {
         const userModel = new UserModel();
         userModel.getAll()
@@ -16,7 +30,7 @@ const userController = {
         const userModel = new UserModel();
         userModel.get(id)
         .then(result => res.json(result))
-        .catch(err => boomErrorMinimizer(err, req, res, null));
+        .catch(err => boomErrorMinimizer(boom.notFound(), req, res, null));
     },
 
     create: (req, res) => {
