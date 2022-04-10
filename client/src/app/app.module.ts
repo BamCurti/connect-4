@@ -10,14 +10,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NewGameComponent } from './pages/new-game/new-game.component';
 import { GameRecordComponent } from './pages/game-record/game-record.component';
-import { ChatComponent } from './pages/game/chat/chat.component';
-import { GameComponent } from './pages/game/game/game.component';
+import { ChatComponent } from './pages/chat/chat.component';
+import { GameComponent } from './pages/game/game.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 //material
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { NotFoundComponent } from './pages/not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatButtonModule } from '@angular/material/button'
     ChatComponent,
     GameComponent,
     UserDetailsComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
