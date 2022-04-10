@@ -15,10 +15,12 @@ import { GameComponent } from './pages/game/game.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './pages/not-found/not-found.component'
 
 //material
 import { MatButtonModule } from '@angular/material/button';
-import { NotFoundComponent } from './pages/not-found/not-found.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
     NoopAnimationsModule,
     //material
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
