@@ -21,6 +21,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

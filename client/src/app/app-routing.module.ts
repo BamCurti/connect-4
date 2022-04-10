@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'game', component: GameComponent },
-  { path: 'game/:id', component: GameDetailsComponent },
-  { path: 'record/:id', component: GameRecordComponent },
+  { path: 'record', component: GameRecordComponent },
+  { path: 'record/:id', component: GameDetailsComponent },
   { path: 'user/me', component: UserDetailsComponent },
   { path: 'user/:id', component: UserDetailsComponent },
   { path: '**', component: NotFoundComponent }
