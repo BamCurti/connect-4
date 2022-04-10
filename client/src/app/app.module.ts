@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+//Created components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -12,6 +13,11 @@ import { GameRecordComponent } from './pages/game-record/game-record.component';
 import { ChatComponent } from './pages/game/chat/chat.component';
 import { GameComponent } from './pages/game/game/game.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { GameDetailsComponent } from './pages/game-details/game-details.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+//material
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -24,11 +30,15 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
     GameRecordComponent,
     ChatComponent,
     GameComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    GameDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NoopAnimationsModule,
+    //material
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
