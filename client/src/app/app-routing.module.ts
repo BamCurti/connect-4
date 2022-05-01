@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', component: NewGameComponent, pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'game', component: GameComponent },
+  { path: 'game/:id', component: GameComponent },
   { path: 'record', component: GameRecordComponent },
   { path: 'record/:id', component: GameDetailsComponent },
   { path: 'user/me', component: UserDetailsComponent },
