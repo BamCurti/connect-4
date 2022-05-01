@@ -1,1 +1,16 @@
-<p>new-game works!</p>
+<div class="">
+  <h2>Welcome, stranger</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h3>Got a key? use it to connect</h3>
+    <mat-form-field>
+      <mat-label for="key">Enter the key</mat-label>
+      <input type="text"  name="key" formControlName="key" matInput>
+    </mat-form-field>
+    <button mat-flat-button color="primary">Go to game</button>
+  </form>
+
+  <div>
+    <h3>Create a new game</h3>
+    <button mat-flat-button color="warn">Create a new Game</button>
+  </div>
+</div>
