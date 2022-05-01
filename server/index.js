@@ -1,6 +1,7 @@
 //Dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 //Configure enviorement variables 
 require("dotenv").config();
@@ -26,6 +27,10 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+console.log('b')
+app.use(cors())
+console.log('a')
 
 //Set Api endpoint
 app.use('/api', router);
