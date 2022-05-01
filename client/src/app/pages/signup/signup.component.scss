@@ -1,0 +1,25 @@
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-top: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width:1025px) {
+  .signup {
+    form {
+      width: 600px;
+    }
+  }
+}
