@@ -40,6 +40,7 @@ export class NewGameComponent implements OnInit {
   }
 
   createGame() {
+    // TODO: Get user id from local session
     this.GameService.createGame('Must read from session')
     .then(game => {
         const id = game.data.insertedId;
