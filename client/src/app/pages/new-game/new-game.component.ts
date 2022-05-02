@@ -33,16 +33,17 @@ export class NewGameComponent implements OnInit {
     const form = this.form.getRawValue();
     console.log(`${this.url}/${form.key}`);
     this.GameService.getGame(form.key)
-    .then(game => console.log(game))
-    .catch(err => console.log(err))
+    .then(game => this.router.navigate([`/game/${game.data._id}`]))
+    .catch(err => {
+      alert('The key was not found. Please try again.')
+    })
   }
 
   createGame() {
-    console.log('Creating gmae');
     this.GameService.createGame('Must read from session')
     .then(game => {
-        console.log(game)
-        this.router.navigate([`/game:${game['_id']}`])
+        const id = game.data.insertedId;
+        this.router.navigate([`/game/${id}`])
     })
     .catch(err => console.log(err))
   }
