@@ -13,6 +13,9 @@ const router = require('./src/routes');
 //import db
 const db = require('./src/core/db');
 
+//import socket conf
+const socket = require('./src/core/socket');
+
 //import swagger conf
 const swaggerConf = require('./swaggerConf');
 
@@ -28,9 +31,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-console.log('b')
+//set cors
 app.use(cors())
-console.log('a')
 
 //Set Api endpoint
 app.use('/api', router);
@@ -44,12 +46,12 @@ swaggerConf(app);
 
 //connect to db
 db.connect()
-.then(client => console.log("client"))
+.then(client => console.log("Connected to DB!"))
 .catch(err => console.error(err));
 
 //List to port
-app.listen(port, () =>{
-    console.log(`app is listening to port: ${port}`);
-})
+const server = app.listen(port, () => console.log(`app is listening to port: ${port}`))
 
+//connect to socket
+socket.connect(server);
 
