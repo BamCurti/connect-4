@@ -24,12 +24,13 @@ const gameController = {
         const gameModel = new GameModel();
         gameModel.get(id)
         .then(result => res.json(result))
-        .catch(err => boomErrorMinimizer(err, req, res, null));
+        .catch(err => boomErrorMinimizer(boom.notFound(), req, res, null));
     },
     create: (req, res) => {
         const game = req.body;
         game.details = [];
         game.date = Date.now();
+        game.isActive = true;
         const gameModel = new GameModel();
         gameModel.create(game)
         .then(result => res.status(201).send(result))
