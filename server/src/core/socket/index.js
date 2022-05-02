@@ -15,8 +15,6 @@ const connect = (server) => {
     io.on('connection', socket => console.log(`New socket connection from ${socket.handshake.headers.host}`));
 }
 
-
-
 module.exports = {
     connect: connect
 }

@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { BoardComponent } from './component/board/board.component';
+import { PieceComponent } from './component/piece/piece.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MatTableModule } from '@angular/material/table';
     GameComponent,
     UserDetailsComponent,
     GameDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BoardComponent,
+    PieceComponent
   ],
   imports: [
     BrowserModule,
