@@ -1,0 +1,20 @@
+$size: 75px;
+span {
+  height: $size;
+  width: $size;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.not-used {
+  background-color: #bbb;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PieceComponent } from './../piece/piece.component'
 
 @Component({
   selector: 'app-board',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  board = Array(6).fill(Array(7))
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.board)
+  }
+
+  onClick(event: Event): void {
+    console.log(event)
   }
 
 }
