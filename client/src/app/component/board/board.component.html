@@ -1,5 +1,7 @@
 <table>
-  <tr *ngFor="let row of board" (click)="onClick($event)">
-    <td *ngFor="let column of row"><app-piece></app-piece></td>
-  </tr>
+    <tr *ngFor="let row of board; let r = index"  [attr.data-row]="r">
+      <td *ngFor="let column of row; let c = index" [attr.data-column]="c" (click)="onClick(c, r)"><app-piece [r]="r"[c]="c"></app-piece></td>
+    </tr>
 </table>
+
+<span>span: {{clicks}}</span>

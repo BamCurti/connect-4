@@ -3,7 +3,6 @@ import { GameService } from 'src/app/shared/services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { SocketService } from 'src/app/shared/services/socket.service';
-import { BoardComponent } from 'src/app/component/board/board.component';
 
 @Component({
   selector: 'app-game',
@@ -39,6 +38,8 @@ export class GameComponent implements OnInit {
     .finally(() => {
       this.hasFetch = true;
     })
+
+
   }
 
 }

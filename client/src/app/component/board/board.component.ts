@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PieceComponent } from './../piece/piece.component'
+import { BoardService } from 'src/app/shared/services/board.service';
 
 @Component({
   selector: 'app-board',
@@ -8,16 +8,38 @@ import { PieceComponent } from './../piece/piece.component'
 })
 export class BoardComponent implements OnInit {
 
-  board = Array(6).fill(Array(7))
+  rowSize = 6;
+  columnSize = 7;
+  clicks = 0;
 
-  constructor() { }
+  board: Array<Array<any>>;
+
+  constructor() {
+    this.board = []
+    for(let r = 0; r < this.rowSize; r++) {
+      this.board.push([]);
+      for(let c = 0; c < this.columnSize; c++)
+        this.board[r].push(null);
+
+    }
+  }
 
   ngOnInit(): void {
     console.log(this.board)
   }
 
-  onClick(event: Event): void {
-    console.log(event)
+  onClick(c: number, r: number): void {
+    let i  = this.rowSize - 1;
+    console.log(this.clicks++)
+    //go from bottom to up to see if there is any not used space
+    while(i >= 0 ) {
+      if(this.board[i][c] === null) {
+        this.board[i][c] = "x";
+        console.log(this.board);
+        console.log()
+        return;
+      }
+      --i;
+    }
   }
-
 }

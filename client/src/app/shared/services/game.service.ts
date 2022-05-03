@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 //interfaces
 import { Game } from './../interfaces/game'
@@ -58,6 +58,4 @@ export class GameService {
       },
     ]
   }
-
-
 }
