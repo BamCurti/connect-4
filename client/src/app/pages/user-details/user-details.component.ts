@@ -15,7 +15,7 @@ export class UserDetailsComponent implements OnInit {
 
   credentials: any = {};
   id : string = '';
-  user: Object = {};
+  user: any = {};
 
   constructor(
     private loginService: LoginService,
@@ -29,12 +29,9 @@ export class UserDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     })
-    this.userService.getUser(this.id).then(response => {
+    this.userService.getUser(this.id).subscribe(response => {
       this.user = response;
-    }).catch(error =>{
-      console.log('No se presentaron datos')
-    }).finally(() =>{
-
+      console.log(this.user);
     })
   }
 

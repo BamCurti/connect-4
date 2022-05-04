@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment'
 import axios from 'axios';
@@ -9,13 +11,15 @@ import axios from 'axios';
 export class UserService {
 
   url = `${environment.apiUrl}/user`
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   getUsers() {
     return axios.get(this.url);
   }
   getUser(id: string) {
-    return axios.get(`${this.url}/${id}`)
+    return this.httpClient.get(`${this.url}/${id}`)
   }
 
 }
