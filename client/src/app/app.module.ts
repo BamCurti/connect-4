@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 //Created components
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { BoardComponent } from './component/board/board.component';
+import { PieceComponent } from './component/piece/piece.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MatTableModule } from '@angular/material/table';
     GameComponent,
     UserDetailsComponent,
     GameDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BoardComponent,
+    PieceComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,9 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

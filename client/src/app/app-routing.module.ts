@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'record/:id', component: GameDetailsComponent },
   { path: 'user/me', component: UserDetailsComponent },
   { path: 'user/:id', component: UserDetailsComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
