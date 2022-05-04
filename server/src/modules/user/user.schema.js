@@ -7,7 +7,7 @@ const url = joi.string().dataUri();
 const userSchema = joi.object({
     email: email.required(),
     password: password.required(),
-    url: url.required()
+    url: url
 });
 
 

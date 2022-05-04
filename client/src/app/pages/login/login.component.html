@@ -1,18 +1,19 @@
 <div class="login">
   <h2>Login</h2>
-  <form action="">
+  <form [formGroup]="loginForm" (submit)="login()">
     <mat-form-field>
       <mat-label>
         Email
       </mat-label>
-      <input type="text" name="email" matInput>
+      <input type="text" name="email" formControlName="email" matInput>
     </mat-form-field>
     <mat-form-field>
       <mat-label>
         Password
       </mat-label>
-      <input type="password" name="password" matInput>
+      <input type="password" name="password" formControlName="password" matInput>
     </mat-form-field>
     <button type="submit" mat-flat-button color="primary">Login</button>
+    <a routerLink="/signup">New user? Click to Sign up!!</a>
   </form>
 </div>
