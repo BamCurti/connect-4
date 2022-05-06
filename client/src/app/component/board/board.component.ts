@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BoardService } from 'src/app/shared/services/board.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { BoardService } from 'src/app/shared/services/board.service';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-
+  @Input() socketService: any = null;
   rowSize = 6;
   columnSize = 7;
-  clicks = 0;
+  move = 0;
 
   board: Array<Array<any>>;
 
@@ -25,21 +25,33 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.board)
+    this.socketService.subscribeToChanges(this.addMoveToBoard);
   }
 
-  onClick(c: number, r: number): void {
+  onClick(c: number): void {
+    if(this.addMoveToBoard(c)) this.socketService.sendMove(c, this.board);
+    else {
+      alert('Select another move vato');
+      return;
+    }
+  }
+
+  addMoveToBoard(c: number): boolean {
     let i  = this.rowSize - 1;
-    console.log(this.clicks++)
+
     //go from bottom to up to see if there is any not used space
-    while(i >= 0 ) {
+    while(i >= 0) {
       if(this.board[i][c] === null) {
         this.board[i][c] = "x";
-        console.log(this.board);
-        console.log()
-        return;
+        console.table(this.board);
+        return true;
       }
       --i;
     }
+    return false;
+  }
+
+  onFetchMove(column: number): void {
+    this.addMoveToBoard(column);
   }
 }

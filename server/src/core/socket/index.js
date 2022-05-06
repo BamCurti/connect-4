@@ -1,3 +1,4 @@
+const moveController = require('../../modules/move/move.controller');
 const socketIo = require('socket.io');
 
 const connect = (server) => {
@@ -12,7 +13,16 @@ const connect = (server) => {
     }
     const io = socketIo(server, conf);
 
-    io.on('connection', socket => console.log(`New socket connection from ${socket.handshake.headers.host}`));
+    io.on('connect', socket => {
+        console.log(`New socket connection from ${socket.id}`);
+
+        socket.on('new-move', (column, board) => {
+            console.table(board);
+            socket.broadcast.emit('fetch-move', column, board);
+        })
+
+
+    });
 }
 
 module.exports = {

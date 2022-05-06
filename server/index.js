@@ -54,4 +54,3 @@ const server = app.listen(port, () => console.log(`app is listening to port: ${p
 
 //connect to socket
 socket.connect(server);
-

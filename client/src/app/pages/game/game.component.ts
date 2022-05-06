@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute,
     private gameService: GameService,
     private router: Router,
-    private socketService: SocketService
+    public socketService: SocketService
   ) { }
 
   ngOnInit(): void {
