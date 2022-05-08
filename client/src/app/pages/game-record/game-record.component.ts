@@ -17,6 +17,6 @@ export class GameRecordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.games = this.gameService.getGames();
+    this.gameService.getGames().subscribe(data => this.games = data);
   }
 }

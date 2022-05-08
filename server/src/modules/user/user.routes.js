@@ -105,7 +105,10 @@ router.get('/', userController.getAll);
 router.get('/:id', userController.get);
 
 //POST
-router.post('/', userController.create);
+router.post('/',
+    userController.verifyUserFormat,
+    userController.verifyUniqueEmail,
+    userController.create);
 
 //UPDATE 
 router.put('/:id', userController.update);

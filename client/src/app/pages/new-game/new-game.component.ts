@@ -41,7 +41,8 @@ export class NewGameComponent implements OnInit {
 
   createGame() {
     // TODO: Get user id from local session
-    this.GameService.createGame('Must read from session')
+    const id = localStorage.getItem('id');
+    this.GameService.createGame(id)
     .then(game => {
         const id = game.data.insertedId;
         this.router.navigate([`/game/${id}`])
