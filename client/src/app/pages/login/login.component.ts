@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     this.credentials = this.loginForm.getRawValue();
     console.log('Enviar datos', this.credentials);
     this.loginService.login(this.credentials).then(response => {
-      this.authService.save(response.token);
+      this.authService.save(response.data);
+      
+      //this.authService.save(response.id);
       this.router.navigate(['']);
     }).catch(e => {
       alert("Something went wrong");

@@ -32,10 +32,13 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 //set cors
-app.use(cors())
+app.use(cors());
 
 //Set Api endpoint
 app.use('/api', router);
+
+//Set auths
+require('./src/auth');
 
 //set middlewares
 app.use(boomError);
