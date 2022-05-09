@@ -20,10 +20,15 @@ export class AuthService {
     })
   }
 
-  save(token:string) {
-    localStorage.setItem('token', token);
+  save(credentials:any) {
+    localStorage.setItem('token', credentials.token);
+    localStorage.setItem('id', credentials.id);
     this.loginStatus.next(true);
   }
 
   constructor() { }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }
