@@ -116,4 +116,6 @@ router.put('/:id', userController.update);
 //DELETE
 router.delete('/:id', userController.delete)
 
+router.post('/auth/google',userController.googleLogin);
+
 module.exports = router;

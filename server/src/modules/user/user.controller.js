@@ -7,6 +7,10 @@ const bcrypt = require('bcrypt');
 //model
 const UserModel = require('./user.model');
 
+//google
+const { OAuth2Client } = require('google-auth-library');
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
 //utils
 const {boomErrorMinimizer} = require('./../../core/middlewares/error.handler');
 
@@ -79,6 +83,20 @@ const userController = {
         .then(result => res.status(200).json(result))
         .catch(err => boomErrorMinimizer(err, req, res, null));
     },
+
+    googleLogin: (req, res) => {
+        console.log('idToken', req.body.idToken);
+        googleClient.verifyIdToken({
+            idToken: req.body.idToken
+        }).then().catch(e => {
+            console.log('Google response: ',response);
+            res.send({
+                token: '12345'
+            })
+        }).catch(e => {
+            res.status(400).send();
+        })
+    }
 }
 
 module.exports = userController;

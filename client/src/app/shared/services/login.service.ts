@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { HttpClient} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -17,10 +20,16 @@ export class LoginService {
     })
   }*/
   
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   login(credentials: any): Promise<any> {
     return axios.post("http://localhost:3000/api/login", credentials);
 
+  }
+
+  googleLogin(idToken: string): Observable<any> {
+    return this.httpClient.post(environment.apiUrl+'/auth/google',{
+      idToken
+    })
   }
 }

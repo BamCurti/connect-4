@@ -14,6 +14,9 @@
       <input type="password" name="password" formControlName="password" matInput>
     </mat-form-field>
     <button type="submit" mat-flat-button color="primary">Login</button>
+    <div>
+      <button mat-flat-button color="secondary" (click)="googleLogin($event)"> Google login</button>
+    </div>
     <a routerLink="/signup">New user? Click to Sign up!!</a>
   </form>
 </div>

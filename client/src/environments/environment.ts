@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   socketUrl: 'http://localhost:3000',
-  apiUrl: 'http://localhost:3000/api' 
+  apiUrl: 'http://localhost:3000/api',
+  googleId: '402060880190-hce6bc8gl31jgi9f8vava68h2ep0suf8.apps.googleusercontent.com'
 };
 
 /*
