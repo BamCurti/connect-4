@@ -27,4 +27,10 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
+
+  delete() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+  }
+
 }

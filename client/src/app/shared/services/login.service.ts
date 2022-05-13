@@ -1,25 +1,18 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LoginService {
-  /*getUsers(){
-    return new Promise((resolve, reject) => {
-      axios.get("http://localhost:3000/api/login")
-      .then((response) => {
-        resolve(response);
-      })
-      .catch(err => reject(err));
-    })
-  }*/
-
-  constructor() { }
+  url = `${environment.apiUrl}/login`
+  constructor() {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+  }
 
   login(credentials: any): Promise<any> {
-    return axios.post("http://localhost:3000/api/login", credentials);
+    return axios.post(this.url, credentials);
   }
 }

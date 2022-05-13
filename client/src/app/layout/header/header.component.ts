@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    private authService: AuthService, private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(): void {
+    this.authService.delete();
+    this.router.navigate(['/']);
   }
 
 }

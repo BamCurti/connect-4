@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import axios from 'axios';
+import { AxiosRequestConfig } from 'axios';
 
 //interfaces
 import { Game } from './../interfaces/game'
@@ -13,10 +14,19 @@ import { Game } from './../interfaces/game'
 export class GameService {
 
   private url: string = environment.apiUrl;
+  private httpOptions = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
+  }
+  private httpOptionsClient = {
+    headers: new HttpHeaders(this.httpOptions)
+  }
 
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+  }
 
   getGame(id: string) {
     const url = `${this.url}/game/${id}`;
@@ -24,7 +34,7 @@ export class GameService {
   }
 
   getGameObservable(id: string): Observable<any> {
-    return this.httpClient.get(`${this.url}/game/${id}`)
+    return this.httpClient.get(`${this.url}/game/${id}`, this.httpOptionsClient)
   }
 
   createGame(red: any): Promise<any> {
@@ -38,7 +48,7 @@ export class GameService {
 
   getGames(): Observable<any> {
     const url = `${environment.apiUrl}/game`
-    return this.httpClient.get(url);
+    return this.httpClient.get(url, this.httpOptionsClient);
   }
 
 }

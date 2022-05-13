@@ -13,6 +13,18 @@ class User extends Model {
             .catch(err => reject(boom.internal()));
         })
     }
+
+    saveToken(id, token) {
+        const update = {
+            token
+        }
+        return this.update(id, update);
+    }
+
+    getByToken(token) {
+        return this.collection.findOne({token});
+    }
+
 }
 
 module.exports = User;

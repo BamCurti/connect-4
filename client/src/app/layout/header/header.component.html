@@ -5,7 +5,10 @@
       <li><a routerLink="/" mat-raised-button color="primary">new game</a></li>
       <li><a routerLink="/record" mat-raised-button color="primary">record</a></li>
     </ul>
-    <a href="/user/me" mat-raised-button color="primary">me</a>
+    <div>
+      <a href="/user/me" mat-raised-button color="primary" >me</a>
+      <button mat-raised-button color="primary"  (click)="onClick()">Log out</button>
+    </div>
   </nav>
 </div>
 

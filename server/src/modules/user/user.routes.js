@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('./user.controller');
+const authController = require('./../../auth/auth.controller')
 
 /**
  * @swagger
@@ -98,11 +99,12 @@ const userController = require('./user.controller');
  *         description: the user was successfully deleted.          
  */
 
-//GET ALL
-router.get('/', userController.getAll);
 
 //GET
-router.get('/:id', userController.get);
+router.get('/:id',
+    authController.verifyToken,
+    userController.get
+);
 
 //POST
 router.post('/',
@@ -111,9 +113,13 @@ router.post('/',
     userController.create);
 
 //UPDATE 
-router.put('/:id', userController.update);
+router.put('/:id', 
+authController.verifyToken,
+userController.update);
 
 //DELETE
-router.delete('/:id', userController.delete)
+router.delete('/:id', 
+authController.verifyToken,
+userController.delete)
 
 module.exports = router;

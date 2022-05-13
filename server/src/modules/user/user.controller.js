@@ -37,7 +37,6 @@ const userController = {
         const userModel = new UserModel();
         userModel.getAll()
         .then(results => res.json({results}))
-        .catch(err => res.sendStatus(500));
     },
 
     get: (req, res) => {
