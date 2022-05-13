@@ -2,7 +2,7 @@ const socketIo = require('socket.io');
 const { connectSocket } = require('./socket.controller');
 
 const connect = (server) => {
-    const url = process.env.SOCKET_URL || 'https://connnnect-4.herokuapp.com/';
+    const url = process.env.SOCKET_URL || 'http://localhost:4200';
     const conf = {
         cors: {
             origin: url,

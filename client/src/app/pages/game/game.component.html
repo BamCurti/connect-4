@@ -5,7 +5,7 @@
     <h2>Send this key to invite another player: {{id}}</h2>
   </div>
 
-  <div class="container" *ngIf="hasFetch " >
+  <div class="container" *ngIf="hasFetch && !!opponent" >
     <h2>Playing against {{opponent}}</h2>
     <div *ngIf="!!game.winner">
       <img src="https://i.gifer.com/7yvK.gif" *ngIf="game.winner === opponent" alt="">
