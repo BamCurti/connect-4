@@ -9,8 +9,8 @@ import { BoardService } from 'src/app/shared/services/board.service';
 export class BoardComponent implements OnInit {
   @Input() socketService: any = null;
   @Input() game: any;
+  @Input() winner:any = '';
   color = 'x';
-  winner:any = null;
 
   rowSize = 6;
   columnSize = 7;
@@ -33,7 +33,6 @@ export class BoardComponent implements OnInit {
     console.log(this.game);
     this.color = ( this.game['redPlayer'] === localStorage.getItem('id') ) ? 'r' : 'b';
     this.socketService.subscribeToChanges(this, this.color);
-    this.socketService.subscribeToWin(this);
   }
 
   onClick(c: number): void {
@@ -53,7 +52,8 @@ export class BoardComponent implements OnInit {
     const hasWon = this.boardService.hasWon(this.board, this.color);
     if(hasWon) {
       this.socketService.sendWin(localStorage.getItem('id'));
-      alert(('You won!'))
+      this.winner = localStorage.getItem('id');
+      alert(('You won!'));
     }
   }
 

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  socketUrl: 'http://localhost:3000'
+  socketUrl: 'https://konnect-4-api.herokuapp.com',
+  apiUrl: 'https://konnect-4-api.herokuapp.com/api'
 };

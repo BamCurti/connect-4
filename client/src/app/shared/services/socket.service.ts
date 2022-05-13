@@ -49,16 +49,21 @@ export class SocketService {
     })
   }
 
-  subscribeToWin(board: BoardComponent) {
+  subscribeToWin(game: GameComponent) {
     this.socket.on('lose-case', (update: any) => {
-      board.winner = update.winner;
-      board.game['isActive'] = update.isActive;
+      game.winner = update.winner;
+      game.game['isActive'] = update.isActive;
       alert('You lose');
-    })
+    });
+
+  }
+
+  subscribeToEndGame(game: GameComponent) {
+
   }
 
   sendWin(id: any) {
-    this.socket.emit('win-case', this.room, id)
+    this.socket.emit('win-case', this.room, id);
   }
 
 }

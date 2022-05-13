@@ -5,14 +5,14 @@
     <h2>Send this key to invite another player: {{id}}</h2>
   </div>
 
-  <div class="container" *ngIf="hasFetch && !!opponent" >
+  <div class="container" *ngIf="hasFetch " >
     <h2>Playing against {{opponent}}</h2>
     <div *ngIf="!!game.winner">
       <img src="https://i.gifer.com/7yvK.gif" *ngIf="game.winner === opponent" alt="">
       <img src="https://media2.giphy.com/media/fXLHAkIvVuggw/giphy.gif?cid=ecf05e47jzfls29yfias86cawisyjeripkx9xd7onhp6phcj&rid=giphy.gif&ct=g" alt="" *ngIf="game.winner !== opponent">
     </div>
 
-    <app-board [socketService]="socketService" [game]="game"></app-board>
+    <app-board [socketService]="socketService" [game]="game" [winner]="winner"></app-board>
   </div>
 
 
