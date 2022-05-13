@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,8 @@ export class AuthService {
 
 
   createUser(user: object){
-    return new Promise((resolve, reject) => {
-      axios.post('http://localhost:3000/api/user', user)
-      .then((response) => {
-        resolve(response);
-      })
-      .catch(err => reject(err));
-    })
+    const url = `${environment.apiUrl}/user`
+    return axios.post(url, user);
   }
 
   save(credentials:any) {

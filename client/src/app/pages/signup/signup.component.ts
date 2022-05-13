@@ -12,8 +12,8 @@ export class SignupComponent implements OnInit {
 
   public signupForm !: FormGroup;
   constructor(
-    private formBuilder: FormBuilder, 
-    private router: Router, 
+    private formBuilder: FormBuilder,
+    private router: Router,
     private authService: AuthService
     ) { }
 
@@ -34,14 +34,21 @@ export class SignupComponent implements OnInit {
     },err=> {
       alert("Something went wrong");
     })*/
-    const body = this.signupForm.getRawValue();
-    delete body.confirm;
+    const form = this.signupForm.getRawValue();
+    const body = {
+      email: form['email'],
+      password: form['password'],
+    }
+
+    console.log(body);
+
     this.authService.createUser(body)
     .then(response => {
       alert("Sign Up Success");
       this.signupForm.reset();
       this.router.navigate(['login']);
     }).catch(err => {
+      console.log(err);
       alert("Something went wrong");
     })
   }

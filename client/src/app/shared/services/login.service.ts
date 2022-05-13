@@ -16,11 +16,10 @@ export class LoginService {
       .catch(err => reject(err));
     })
   }*/
-  
+
   constructor() { }
 
   login(credentials: any): Promise<any> {
     return axios.post("http://localhost:3000/api/login", credentials);
-    
   }
 }

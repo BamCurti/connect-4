@@ -1,4 +1,5 @@
 const socketIo = require('socket.io');
+const { connectSocket } = require('./socket.controller');
 
 const connect = (server) => {
     const url = process.env.SOCKET_URL || 'http://localhost:4200';
@@ -12,7 +13,7 @@ const connect = (server) => {
     }
     const io = socketIo(server, conf);
 
-    io.on('connection', socket => console.log(`New socket connection from ${socket.handshake.headers.host}`));
+    io.on('connect', connectSocket);
 }
 
 module.exports = {

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PieceComponent implements OnInit {
   @Input() r: number = 0;
   @Input() c: number = 0;
+  @Input() color: any = null;
 
   constructor() { }
 

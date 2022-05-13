@@ -48,6 +48,7 @@ import { PieceComponent } from './component/piece/piece.component';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    HttpClientModule,
     //material
     MatButtonModule,
     MatFormFieldModule,
