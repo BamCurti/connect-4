@@ -1,6 +1,9 @@
 //joi
 const { userSchema } = require('./user.schema');
 
+//bcrypt
+const bcrypt = require('bcrypt');
+
 //model
 const UserModel = require('./user.model');
 
@@ -18,11 +21,22 @@ const userController = {
         next();
     },
 
+    verifyUniqueEmail: (req, res, next) => {
+        const userModel = new UserModel();
+        const email = req.body.email;
+        userModel.getByEmail(email)
+        .then(result => {
+            console.log(result);
+            if(result) next(boom.conflict());
+            next();
+        })
+        .catch(err => next(err)); 
+    },
+
     getAll: (req, res) => {
         const userModel = new UserModel();
         userModel.getAll()
         .then(results => res.json({results}))
-        .catch(err => res.sendStatus(500));
     },
 
     get: (req, res) => {
@@ -36,8 +50,14 @@ const userController = {
     create: (req, res) => {
         const user = req.body;
         const userModel = new UserModel();
-        userModel.create(user)
-        .then(result => res.status(201).send(result))
+        
+        bcrypt.hash(user.password, 10)
+        .then(hash => {
+            user.password = hash;
+            userModel.create(user)
+            .then(result => res.status(201).send(result))
+            .catch(err => res.status(500).send(err));
+        })
         .catch(err => res.status(500).send(err));
     },
 

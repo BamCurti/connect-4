@@ -1,0 +1,5 @@
+<table>
+    <tr *ngFor="let row of board; let r = index"  [attr.data-row]="r">
+      <td *ngFor="let column of row; let c = index" [attr.data-column]="c" (click)="onClick(c)"><app-piece [r]="r"[c]="c" [color]="board[r][c]"></app-piece></td>
+    </tr>
+</table>

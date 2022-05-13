@@ -1,0 +1,15 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="goToGame()">
+    <h2>Got a key? use it to connect</h2>
+    <mat-form-field>
+      <mat-label for="key">Enter the key</mat-label>
+      <input type="text"  name="key" formControlName="key" matInput>
+    </mat-form-field>
+    <button mat-flat-button color="primary">Go to game</button>
+  </form>
+
+  <div class="create-container">
+    <h2>Create a new game</h2>
+    <button mat-flat-button color="warn" (click)="createGame()">Create a new Game</button>
+  </div>
+</div>

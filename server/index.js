@@ -1,6 +1,7 @@
 //Dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 //Configure enviorement variables 
 require("dotenv").config();
@@ -11,6 +12,9 @@ const router = require('./src/routes');
 
 //import db
 const db = require('./src/core/db');
+
+//import socket conf
+const socket = require('./src/core/socket');
 
 //import swagger conf
 const swaggerConf = require('./swaggerConf');
@@ -27,8 +31,14 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+//set cors
+app.use(cors());
+
 //Set Api endpoint
 app.use('/api', router);
+
+//Set auths
+require('./src/auth');
 
 //set middlewares
 app.use(boomError);
@@ -39,12 +49,11 @@ swaggerConf(app);
 
 //connect to db
 db.connect()
-.then(client => console.log("client"))
+.then(client => console.log("Connected to DB!"))
 .catch(err => console.error(err));
 
 //List to port
-app.listen(port, () =>{
-    console.log(`app is listening to port: ${port}`);
-})
+const server = app.listen(port, () => console.log(`app is listening to port: ${port}`))
 
-
+//connect to socket
+socket.connect(server);

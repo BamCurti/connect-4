@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const gameController = require('./game.controller')
+const authController = require('./../../auth/auth.controller');
 
 /**
  * @swagger
@@ -97,20 +98,28 @@ const gameController = require('./game.controller')
 
 
 
-router.get('/', gameController.getAll);
+router.get('/', 
+authController.verifyToken,
+gameController.getAll);
 
-router.get('/:id', gameController.get);
+router.get('/:id', 
+authController.verifyToken,
+gameController.get);
 
 router.post('/', 
+    authController.verifyToken,
     gameController.verifyGameFormat,
     gameController.create
 );
 
 router.put('/:id', 
+    authController.verifyToken,
     gameController.verifyGameFormat,
     gameController.update
 );
 
-router.delete('/:id', gameController.delete)
+router.delete('/:id', 
+authController.verifyToken,    
+gameController.delete)
 
 module.exports = router;
