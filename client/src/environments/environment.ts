@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  socketUrl: 'https://konnect-4-api.herokuapp.com',
-  apiUrl: 'https://konnect-4-api.herokuapp.com/api'
+  socketUrl: 'http//:locahost:3000',
+  apiUrl: 'http//:locahost:3000/api'
 };
 
 /*
